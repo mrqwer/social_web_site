@@ -82,7 +82,7 @@ target/
 __pycache__/
 local_settings.py
 
-.env
+.test.env
 db.sqlite3cel
 .Dockerfile.swp
 .swp
@@ -90,6 +90,3 @@ db.sqlite3cel
 .idea
 Footer
 .git
-Dockerfile
-docker-compose.yml
-
