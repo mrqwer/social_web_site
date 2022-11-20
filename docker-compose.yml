@@ -18,10 +18,10 @@ services:
     volumes:
       - social_postgres_data:/var/lib/postgresql/data/
     ports:
-      - 5432:5432
+      - 5431:5432
     env_file:
       - ./.test.env
-    environment:
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
+    # environment:
+    #   - "POSTGRES_HOST_AUTH_METHOD=trust"
 volumes:
   social_postgres_data:

@@ -31,7 +31,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'djoser',
-
+    'drf_yasg',
+    'corsheaders',
     'src.profiles.apps.ProfilesConfig'
 ]
 
@@ -43,6 +44,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -130,14 +134,35 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     ]
+# }
+
+
 REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
-
 SIMPLE_JWT = {
    # 'AUTH_HEADER_TYPES': ('JWT',),
 }
 
 AUTH_USER_MODEL = 'profiles.CustomUser'
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.localhost\.com$",
+    r"^https://\w+\.127.0.0.1\.com$",
+]
+
+#CORS_ORIGIN_WHITELIST = [
+#    "http://localhost:8080",
+#    "http://localhost:8081",
+#    "http://127.0.0.1:8000",
+#    "http://127.0.0.1:1313",
+#    "http://localhost:1313",
+#]

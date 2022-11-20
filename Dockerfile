@@ -16,9 +16,12 @@ RUN pip install --upgrade pip \
 
 COPY . /usr/src/app/
 COPY ./entrypoint.sh .
-
+RUN chmod +x /usr/src/app/entrypoint.sh
+USER postgres
 # EXPOSE 8000
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+EXPOSE 5432
+CMD ["postgres"]
 # CMD [ "python3" "manage.py" "runserver" ]
 #RUN apt-get update && apt-get install netcat -y
 #RUN apt-get upgrade -y && apt-get install postgresql gcc python3-dev musl-dev -y
