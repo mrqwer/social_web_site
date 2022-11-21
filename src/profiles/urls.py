@@ -3,5 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('<int:pk>/', views.GetCustomUserView.as_view())
+    path('profile/<int:pk>/', views.CustomUserView.as_view({"get": "retrieve", "put": "update"})),
+    path('<int:pk>/', views.CustomUserPublicView.as_view({"get": "retrieve"})),
 ]
