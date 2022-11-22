@@ -4,7 +4,8 @@ from .models import CustomUser
 
 class GetCustomUserSerializer(serializers.ModelSerializer):
     """"""
-
+    avatar = serializers.ImageField(write_only=True)
+    
     class Meta:
         model = CustomUser
         exclude = ("groups",
@@ -19,6 +20,7 @@ class GetCustomUserSerializer(serializers.ModelSerializer):
 
 class GetCustomUserPublicSerializer(serializers.ModelSerializer):
     """  """
+    
     class Meta:
         model = CustomUser
         exclude = ("phone",

@@ -90,3 +90,16 @@ db.sqlite3cel
 .idea
 Footer
 .git
+
+!*media/.gitkeep
+media/*
+
+log/debug.log
+
+build
+doc
+home.rst
+make.bat
+Makefile
+
+doc-dev
