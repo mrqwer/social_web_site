@@ -33,7 +33,11 @@ INSTALLED_APPS = [
     'djoser',
     'drf_yasg',
     'corsheaders',
-    'src.profiles.apps.ProfilesConfig'
+    'mptt',
+
+    'src.profiles.apps.ProfilesConfig',
+    'src.wall.apps.WallConfig',
+    'src.comments.apps.CommentsConfig'
 ]
 
 MIDDLEWARE = [
@@ -139,24 +143,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
- }
+}
 
-#SIMPLE_JWT = {
+# SIMPLE_JWT = {
 #    'AUTH_HEADER_TYPES': ('JWT',),
-#}
+# }
 
 AUTH_USER_MODEL = 'profiles.CustomUser'
 
-#CORS_ALLOWED_ORIGIN_REGEXES = [
+# CORS_ALLOWED_ORIGIN_REGEXES = [
 #    r"^https://\w+\.localhost\$",
 #    r"^https://\w+\.127.0.0.1\$",
 #    r"^https://\w+\.0.0.0.0\$",
-#]
+# ]
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8080",
@@ -201,4 +205,3 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
-
